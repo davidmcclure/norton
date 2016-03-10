@@ -1,3 +1,4 @@
 django
 ipython
 psycopg2
+django_extensions

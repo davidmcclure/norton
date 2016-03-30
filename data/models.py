@@ -7,6 +7,9 @@ class Anthology(models.Model):
     title = models.CharField(max_length = 200)
     year = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = 'anthologies'
+
     def __str__(self):
         return self.title
 
@@ -31,4 +34,6 @@ class Work(models.Model):
         return self.title + ' by ' + str(self.author)
 
     def clean(self):
-        pass
+
+        if self.parent and self.parent.author != self.author:
+            raise ValidationError('The parent work must have the same author.')

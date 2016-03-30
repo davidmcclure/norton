@@ -24,7 +24,7 @@ class Author(models.Model):
 class Work(models.Model):
 
     title = models.CharField(max_length=200)
-    author = models.ForeignKey('Author')
+    author = models.ForeignKey('Author', null = True)
     parent = models.ForeignKey('Work', null = True, blank = True)
 
     def __str__(self):

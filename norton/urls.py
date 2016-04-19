@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+admin.site.index_template = 'admin/idex.html'
+admin.autodiscover()
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]

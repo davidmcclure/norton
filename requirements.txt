@@ -2,3 +2,4 @@ django
 ipython
 psycopg2
 django_extensions
+django_select2

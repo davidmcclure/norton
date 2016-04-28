@@ -30,9 +30,6 @@ class Work(models.Model):
     parent = models.ForeignKey('Work', null = True, blank = True)
     anthologies = models.ManyToManyField('Anthology')
 
-    class Meta:
-        unique_together = (('title', 'author', 'parent'),)
-
     def __str__(self):
         byline = self.title + ' by ' + str(self.author)
         if self.parent:

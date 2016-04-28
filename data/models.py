@@ -16,7 +16,6 @@ class Anthology(models.Model):
 class Author(models.Model):
 
     name = models.CharField(max_length=20, null = True, blank = True)
-    # last_name = models.CharField(max_length=200, null = True, blank = True)
     birth_year = models.IntegerField(null = True)
     death_year = models.IntegerField(null = True)
     circa = models.BooleanField(default = False)
@@ -31,8 +30,14 @@ class Work(models.Model):
     parent = models.ForeignKey('Work', null = True, blank = True)
     anthologies = models.ManyToManyField('Anthology')
 
+    class Meta:
+        unique_together = (('title', 'author', 'parent'),)
+
     def __str__(self):
-        return self.title + ' by ' + str(self.author)
+        byline = self.title + ' by ' + str(self.author)
+        if self.parent:
+            byline += ' (' + self.parent.title + ')'
+        return byline
 
     def clean(self):
 

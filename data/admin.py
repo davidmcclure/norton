@@ -19,9 +19,9 @@ class WorkForm(forms.ModelForm):
         )
 
 
-
 class WorkAdmin(admin.ModelAdmin):
     form = WorkForm
+    search_fields = ['title']
 
 
 # Register your models here.

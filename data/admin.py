@@ -24,7 +24,11 @@ class WorkAdmin(admin.ModelAdmin):
     search_fields = ['title']
 
 
+class AuthorAdmin(admin.ModelAdmin):
+    search_fields = ['name']
+
+
 # Register your models here.
-admin.site.register(Author)
+admin.site.register(Author, AuthorAdmin)
 admin.site.register(Anthology)
 admin.site.register(Work, WorkAdmin)

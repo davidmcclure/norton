@@ -15,10 +15,10 @@ class Anthology(models.Model):
 
 class Author(models.Model):
 
-    name = models.CharField(max_length=20, null = True, blank = True)
-    birth_year = models.IntegerField(null = True)
-    death_year = models.IntegerField(null = True)
-    circa = models.BooleanField(default = False)
+    name = models.CharField(max_length=200, null=True, blank=True, unique=True)
+    birth_year = models.IntegerField(null=True)
+    death_year = models.IntegerField(null=True)
+    circa = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -38,5 +38,17 @@ class Work(models.Model):
 
     def clean(self):
 
+        # Ensure that the parent has the same author.
         if self.parent and self.parent.author != self.author:
             raise ValidationError('The parent work must have the same author.')
+
+        # Block duplicate title / author.
+        if not self.parent:
+
+            existing = Work.objects.filter(
+                title=self.title,
+                author=self.author,
+            )
+
+            if existing.count() > 0:
+                raise ValidationError('A work with that title and author already exists.')

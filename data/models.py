@@ -1,5 +1,8 @@
+
+
 from django.db import models
 from django.core.exceptions import ValidationError
+from titlecase import titlecase
 
 # Create your models here.
 class Anthology(models.Model):
@@ -25,10 +28,15 @@ class Author(models.Model):
 
 class Work(models.Model):
 
+    # TODO: Unique index on title, author, and parent
+
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', null = True)
     parent = models.ForeignKey('Work', null = True, blank = True)
     anthologies = models.ManyToManyField('Anthology')
+
+    class Meta:
+        unique_together = ('title', 'author', 'parent')
 
     def __str__(self):
         byline = self.title + ' by ' + str(self.author)

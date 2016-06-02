@@ -1,8 +1,5 @@
-
-
 from django.db import models
 from django.core.exceptions import ValidationError
-from titlecase import titlecase
 
 # Create your models here.
 class Anthology(models.Model):
@@ -19,8 +16,8 @@ class Anthology(models.Model):
 class Author(models.Model):
 
     name = models.CharField(max_length=200, null=True, blank=True, unique=True)
-    birth_year = models.IntegerField(null=True)
-    death_year = models.IntegerField(null=True)
+    birth_year = models.IntegerField(null=True, blank=True)
+    death_year = models.IntegerField(null=True, blank=True)
     circa = models.BooleanField(default=False)
 
     def __str__(self):
@@ -41,7 +38,7 @@ class Work(models.Model):
     def __str__(self):
         byline = self.title + ' by ' + str(self.author)
         if self.parent:
-            byline += ' (' + self.parent.title + ')'
+            byline += ' [' + self.parent.title + ']'
         return byline
 
     def clean(self):

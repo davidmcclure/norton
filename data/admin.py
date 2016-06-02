@@ -21,7 +21,7 @@ class WorkForm(forms.ModelForm):
 
 class WorkAdmin(admin.ModelAdmin):
     form = WorkForm
-    search_fields = ['title']
+    search_fields = ['title', 'author__name']
 
 
 class AuthorAdmin(admin.ModelAdmin):

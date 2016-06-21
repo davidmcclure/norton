@@ -1,7 +1,9 @@
+
+
 from django.db import models
 from django.core.exceptions import ValidationError
 
-# Create your models here.
+
 class Anthology(models.Model):
 
     title = models.CharField(max_length = 200)
@@ -13,6 +15,7 @@ class Anthology(models.Model):
     def __str__(self):
         return self.title
 
+
 class Author(models.Model):
 
     name = models.CharField(max_length=200, null=True, blank=True, unique=True)
@@ -23,9 +26,8 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-class Work(models.Model):
 
-    # TODO: Unique index on title, author, and parent
+class Work(models.Model):
 
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', null = True)

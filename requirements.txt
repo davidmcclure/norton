@@ -4,3 +4,4 @@ psycopg2
 django
 django_extensions
 django_select2
+gunicorn

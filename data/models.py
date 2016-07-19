@@ -58,5 +58,5 @@ class Work(models.Model):
                 .first()
             )
 
-            if existing and existing.id is not self.id:
+            if existing and existing.id != self.id:
                 raise ValidationError('A work with that title and author already exists.')

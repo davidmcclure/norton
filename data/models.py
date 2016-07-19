@@ -52,10 +52,11 @@ class Work(models.Model):
         # Block duplicate title / author.
         if not self.parent:
 
-            existing = Work.objects.filter(
-                title=self.title,
-                author=self.author,
+            existing = (
+                Work.objects
+                .filter(title=self.title, author=self.author)
+                .first()
             )
 
-            if existing.count() > 0:
+            if existing and existing.id is not self.id:
                 raise ValidationError('A work with that title and author already exists.')

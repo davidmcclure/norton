@@ -16,6 +16,6 @@ class AuthorForm(forms.ModelForm):
 
         widgets = dict(
             country=Select2Widget,
-            genres=Select2MultipleWidget,
+            genre=Select2MultipleWidget,
             race=Select2MultipleWidget,
         )

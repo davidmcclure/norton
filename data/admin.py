@@ -26,6 +26,7 @@ class WorkForm(forms.ModelForm):
 class WorkAdmin(admin.ModelAdmin):
 
     form = WorkForm
+
     search_fields = ['title', 'author__name']
 
     def response_add(self, request, obj, post_url_continue=None):

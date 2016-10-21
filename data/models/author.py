@@ -41,5 +41,10 @@ class Author(models.Model):
         'Race',
     )
 
+    gender = models.ForeignKey(
+        'Gender',
+        null=True,
+    )
+
     def __str__(self):
         return self.name

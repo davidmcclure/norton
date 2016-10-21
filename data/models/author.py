@@ -31,19 +31,23 @@ class Author(models.Model):
 
     country = CountryField(
         null=True,
+        blank=True,
     )
 
     genre = models.ManyToManyField(
         'Genre',
+        blank=True,
     )
 
     race = models.ManyToManyField(
         'Race',
+        blank=True,
     )
 
     gender = models.ForeignKey(
         'Gender',
         null=True,
+        blank=True,
     )
 
     def __str__(self):

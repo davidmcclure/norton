@@ -46,6 +46,7 @@ class Author(models.Model):
 
     gender = models.ForeignKey(
         'Gender',
+        on_delete=models.SET_NULL,
         null=True,
         blank=True,
     )

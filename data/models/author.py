@@ -2,6 +2,8 @@
 
 from django.db import models
 
+from django_countries.fields import CountryField
+
 
 class Author(models.Model):
 
@@ -24,6 +26,10 @@ class Author(models.Model):
 
     circa = models.BooleanField(
         default=False,
+    )
+
+    country = CountryField(
+        null=True,
     )
 
     def __str__(self):

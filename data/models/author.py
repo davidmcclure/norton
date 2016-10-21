@@ -33,7 +33,7 @@ class Author(models.Model):
         null=True,
     )
 
-    genres = models.ManyToManyField(
+    genre = models.ManyToManyField(
         'Genre',
     )
 

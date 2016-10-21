@@ -6,7 +6,10 @@ from django.core.exceptions import ValidationError
 
 class Anthology(models.Model):
 
-    title = models.CharField(max_length = 200)
+    title = models.CharField(
+        max_length=200,
+    )
+
     year = models.IntegerField()
 
     class Meta:
@@ -18,10 +21,26 @@ class Anthology(models.Model):
 
 class Author(models.Model):
 
-    name = models.CharField(max_length=200, null=True, blank=True, unique=True)
-    birth_year = models.IntegerField(null=True, blank=True)
-    death_year = models.IntegerField(null=True, blank=True)
-    circa = models.BooleanField(default=False)
+    name = models.CharField(
+        unique=True,
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+
+    birth_year = models.IntegerField(
+        null=True,
+        blank=True,
+    )
+
+    death_year = models.IntegerField(
+        null=True,
+        blank=True,
+    )
+
+    circa = models.BooleanField(
+        default=False,
+    )
 
     def __str__(self):
         return self.name
@@ -29,25 +48,53 @@ class Author(models.Model):
 
 class Work(models.Model):
 
-    title = models.CharField(max_length=200)
-    author = models.ForeignKey('Author', null = True)
-    parent = models.ForeignKey('Work', null = True, blank = True)
-    anthologies = models.ManyToManyField('Anthology')
+    title = models.CharField(
+        max_length=200,
+    )
+
+    author = models.ForeignKey(
+        'Author',
+        null=True,
+    )
+
+    parent = models.ForeignKey(
+        'Work',
+        null=True,
+        blank=True,
+    )
+
+    anthologies = models.ManyToManyField(
+        'Anthology',
+    )
 
     class Meta:
         unique_together = ('title', 'author', 'parent')
 
     def __str__(self):
+
+        """
+        Include the parent title in the admin listing.
+        """
+
         byline = self.title + ' by ' + str(self.author)
+
         if self.parent:
             byline += ' [' + self.parent.title + ']'
+
         return byline
 
     def clean(self):
 
+        """
+        - Ensure that the parent has the same author.
+        - Block duplicate title / author pair.
+        """
+
         # Ensure that the parent has the same author.
         if self.parent and self.parent.author != self.author:
-            raise ValidationError('The parent work must have the same author.')
+            raise ValidationError(
+                'The parent work must have the same author.'
+            )
 
         # Block duplicate title / author.
         if not self.parent:
@@ -59,4 +106,6 @@ class Work(models.Model):
             )
 
             if existing and existing.id != self.id:
-                raise ValidationError('A work with that title and author already exists.')
+                raise ValidationError(
+                    'A work with that title and author already exists.'
+                )

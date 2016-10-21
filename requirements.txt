@@ -5,3 +5,4 @@ django
 django_extensions
 django_select2
 gunicorn
+django-countries

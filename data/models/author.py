@@ -33,5 +33,9 @@ class Author(models.Model):
         null=True,
     )
 
+    genres = models.ManyToManyField(
+        'Genre',
+    )
+
     def __str__(self):
         return self.name

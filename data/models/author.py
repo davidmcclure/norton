@@ -24,7 +24,8 @@ class Author(models.Model):
         blank=True,
     )
 
-    circa = models.BooleanField(
+    birth_death_circa = models.BooleanField(
+        verbose_name='Birth / death dates are approximate.',
         default=False,
     )
 

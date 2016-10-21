@@ -1,7 +1,7 @@
 
 
 from django import forms
-from django_select2.forms import Select2Widget
+from django_select2.forms import Select2Widget, Select2MultipleWidget
 
 from data.models import Author
 
@@ -16,4 +16,5 @@ class AuthorForm(forms.ModelForm):
 
         widgets = dict(
             country=Select2Widget,
+            genres=Select2MultipleWidget,
         )

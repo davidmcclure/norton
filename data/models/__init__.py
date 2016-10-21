@@ -1,6 +1,7 @@
 
 
-from .anthology import Anthology
 from .author import Author
-from .genre import Genre
+from .anthology import Anthology
 from .work import Work
+from .genre import Genre
+from .race import Race

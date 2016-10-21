@@ -5,6 +5,12 @@ from django.db import models
 
 class Gender(models.Model):
 
+    DEFAULTS = [
+        'Male',
+        'Female',
+        'Other',
+    ]
+
     name = models.CharField(
         unique=True,
         max_length=200,

@@ -2,8 +2,10 @@
 
 from django.db import models
 
+from .category import Category
 
-class Genre(models.Model):
+
+class Genre(Category):
 
     DEFAULTS = [
         'Poetry',
@@ -13,11 +15,3 @@ class Genre(models.Model):
         'Essay',
         'Short fiction',
     ]
-
-    name = models.CharField(
-        unique=True,
-        max_length=200,
-    )
-
-    def __str__(self):
-        return self.name

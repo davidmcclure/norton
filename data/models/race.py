@@ -2,8 +2,10 @@
 
 from django.db import models
 
+from .category import Category
 
-class Race(models.Model):
+
+class Race(Category):
 
     DEFAULTS = [
         'East Asian',
@@ -18,13 +20,5 @@ class Race(models.Model):
         'Jewish',
     ]
 
-    name = models.CharField(
-        unique=True,
-        max_length=200,
-    )
-
     class Meta:
         verbose_name_plural = 'Racial categories'
-
-    def __str__(self):
-        return self.name

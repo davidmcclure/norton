@@ -2,8 +2,10 @@
 
 from django.db import models
 
+from .category import Category
 
-class Gender(models.Model):
+
+class Gender(Category):
 
     DEFAULTS = [
         'Male',
@@ -11,13 +13,5 @@ class Gender(models.Model):
         'Other',
     ]
 
-    name = models.CharField(
-        unique=True,
-        max_length=200,
-    )
-
     class Meta:
         verbose_name_plural = 'Gender categories'
-
-    def __str__(self):
-        return self.name

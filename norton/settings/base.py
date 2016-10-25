@@ -130,8 +130,6 @@ STATIC_URL = '/static/'
 # Countries
 # https://github.com/SmileyChris/django-countries
 
-COUNTRIES_FIRST = [
-    'US',
-    'GB',
-    'IE',
-]
+COUNTRIES_OVERRIDE = {
+    'GB': None,
+}

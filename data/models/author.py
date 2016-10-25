@@ -4,6 +4,8 @@ from django.db import models
 
 from django_countries.fields import CountryField
 
+from localflavor.gb.gb_regions import GB_NATIONS_CHOICES
+
 
 class Author(models.Model):
 
@@ -30,6 +32,14 @@ class Author(models.Model):
     )
 
     country = CountryField(
+        null=True,
+        blank=True,
+    )
+
+    gb_country = models.CharField(
+        max_length=200,
+        verbose_name='Great Britain Country',
+        choices=GB_NATIONS_CHOICES,
         null=True,
         blank=True,
     )

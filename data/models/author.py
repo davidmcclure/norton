@@ -51,5 +51,10 @@ class Author(models.Model):
         blank=True,
     )
 
+    notes = models.TextField(
+        null=True,
+        blank=True,
+    )
+
     def __str__(self):
         return self.name

@@ -41,6 +41,7 @@ class Author(models.Model):
 
     race = models.ManyToManyField(
         'Race',
+        verbose_name='Race / Ethnicity',
         blank=True,
     )
 

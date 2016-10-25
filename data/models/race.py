@@ -12,6 +12,7 @@ class Race(Category):
         'South Asian',
         'Other Asian',
         'Black or African American',
+        'African',
         'Hispanic or Latino',
         'Middle Eastern',
         'Native American, American Indian, or Alaska Native',

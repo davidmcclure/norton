@@ -11,7 +11,7 @@ class Genre(Category):
         'Poetry',
         'Novel',
         'Drama',
-        'Theory / criticism',
-        'Essay',
+        'Personal Essay / Memoir',
+        'Essay / Criticism',
         'Short fiction',
     ]

@@ -13,5 +13,5 @@ class Genre(Category):
         'Drama',
         'Personal Essay / Memoir',
         'Essay / Criticism',
-        'Short fiction',
+        'Short Fiction',
     ]

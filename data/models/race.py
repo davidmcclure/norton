@@ -16,7 +16,7 @@ class Race(Category):
         'Hispanic or Latino',
         'Middle Eastern',
         'Native American, American Indian, or Alaska Native',
-        'Native Hawaian or other Pacific Islander',
+        'Native Hawaiian or other Pacific Islander',
         'White or European American',
         'Jewish',
     ]
